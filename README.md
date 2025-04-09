@@ -38,8 +38,8 @@ version: "3"
 
 services:
   ftbserver:
-    image: yourdockerhubuser/ftb-oceanblock:1.0.0
-    container_name: ftb-oceanblock
+    image: tr0mb4s/ftb-oceanblock-2:latest
+    container_name: ftb-oceanblock-2
     environment:
       EULA: "true"
       MEMORY: "6G"
