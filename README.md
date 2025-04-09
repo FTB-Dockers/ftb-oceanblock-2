@@ -2,6 +2,7 @@
 To install this on Unraid, copy template/ftb-oceanblock.xml into /boot/config/plugins/dockerMan/templates-user/ on your Unraid server.
 
 -----------------------------------
+## About FTB OceanBlock 2
 
 Your escape pod has crashed on an unknown planet, a world of water. You are not the first, but you are alone. Looking beneath the water, you feel a malevolent energy. Discover custom-built structures spread across an endless ocean. Dive deep into the dark lore that traps you on the planet. Delve into immersive questlines that guide you through the progression in the pack. Defeat the monsters of the abyss and make your way back home!
 
