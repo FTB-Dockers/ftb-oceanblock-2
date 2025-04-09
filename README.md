@@ -1,56 +1,117 @@
-# Instructions
-To install this on Unraid, copy template/ftb-oceanblock.xml into /boot/config/plugins/dockerMan/templates-user/ on your Unraid server.
-Alternatively, you can execute the following script in Docker terminal:
+# 🧱 FTB OceanBlock Server - Docker Image
 
+A pre-installed, plug-and-play [Feed The Beast (FTB)](https://feed-the-beast.com/) modded Minecraft server based on the **OceanBlock 2** modpack.  
+Built for Docker, runs anywhere — including **Unraid**, **Docker Compose**, and plain `docker run`.
+
+---
+
+## 🎯 Features
+
+- ✅ Based on **OceanBlock 2** (modpack ID `128`, version `100059`)
+- ✅ Pre-installed server files — no download delay
+- ✅ Supports Java 21 via `openjdk:21-jdk-slim`
+- ✅ Fully configurable via environment variables
+- ✅ Persists world/config/mods in `/data`
+- ✅ Works on **Unraid** with included XML template and icon
+- ✅ Docker Hub–ready image with version tagging
+
+---
+
+## 🐳 Quick Start (Docker)
+
+```bash
+docker run -d \
+  --name ftb-oceanblock-2 \
+  -p 25565:25565 \
+  -e EULA=true \
+  -e MEMORY=6G \
+  -v /your/local/folder:/data \
+  yourdockerhubuser/ftb-oceanblock:1.0.0
 ```
-curl -o /boot/config/plugins/dockerMan/templates-user/ftb-oceanblock-2.xml \
-  https://raw.githubusercontent.com/FTB-Dockers/ftb-oceanblock-2/blob/main/template/ftb-oceanblock-2.xml
+
+---
+
+## 🧩 Docker Compose
+
+```yaml
+version: "3"
+
+services:
+  ftbserver:
+    image: yourdockerhubuser/ftb-oceanblock:1.0.0
+    container_name: ftb-oceanblock
+    environment:
+      EULA: "true"
+      MEMORY: "6G"
+    ports:
+      - "25565:25565"
+    volumes:
+      - ./world:/data
+    restart: unless-stopped
 ```
 
------------------------------------
-## About FTB OceanBlock 2
+---
 
-Your escape pod has crashed on an unknown planet, a world of water. You are not the first, but you are alone. Looking beneath the water, you feel a malevolent energy. Discover custom-built structures spread across an endless ocean. Dive deep into the dark lore that traps you on the planet. Delve into immersive questlines that guide you through the progression in the pack. Defeat the monsters of the abyss and make your way back home!
+## ⚙️ Environment Variables
 
-![Features](https://cdn.feed-the-beast.com/packs/128-ftb-oceanblock-2/features.webp)
+| Variable     | Description                             | Example |
+|--------------|-----------------------------------------|---------|
+| `EULA`       | Must be `true` to accept Minecraft EULA | `true`  |
+| `MEMORY`     | Maximum Java heap memory                | `6G`    |
+| `JVM_OPTS`   | Additional Java options (optional)      | `-XX:+UseG1GC` |
 
-### Dive Into The Progression
-Scavenge what resources you can gather from nearby debris, learn to automate basic resources that allow you to build a foundation into tech and power, and prepare your gear to survive the crushing depths.
+---
 
-### Subaquatic Evolution
-Your diving suit must be pressurized to survive the crushing depths on the ocean, this planet has technology that must be acquired deep below the surface.
+## 💾 Data Persistence
 
-### A Curated Adventure
-Beneath the water are submerged structures, mysterious challenges and hidden artifacts to discover and explore, learn about what has happened to those who were not able to survive.
+Everything important is stored in `/data`:
+- `world/`
+- `mods/`
+- `config/`
+- `eula.txt`, `logs/`, etc.
 
-### Explore Dangerous New Dimensions
-The Lava Dimension is not as you know it, and the Rift seems like a place you venture to in order to find your way off the planet, but it is not for the unequipped. With great risk, comes great rewards.
+Mount a volume or folder to `/data` to keep your world between updates.
 
-### The Unrelenting Dark Depths
-Fight against custom-modelled watery beasts and monsters of the Rift for the first time.
+---
 
-### Rewarding Questlines
-Progress through your modpack experience with the ability to earn rewards and develop your efficiency with the key mods of the pack.
+## 🖥️ Unraid Support
 
-![Notable Mods](https://cdn.feed-the-beast.com/packs/128-ftb-oceanblock-2/notable-mods.webp)
+- `template/ftb-oceanblock-2.xml` is included for Unraid Docker GUI
+- Custom icon available in `unraid-icon.png` (128x128 PNG)
+- Copy or link to the XML in `/boot/config/plugins/dockerMan/templates-user/`
 
-### Oritech
-Make use of the mysterious energy beneath the surface and create machines, tools and fuel that will greatly assist you in your journey.
+---
 
-### Replication
-There may be a lack of land-based resources on this watery planet, but with the devices you create with the Replication mod you are able to automate and produce more of what you had originally, using the matter that is scanned from the original material.
+## 🛠️ Build From Source
 
-### Nautec
-Explore the depths of the ocean and discover new technologies, both powerful and dangerous. Activate the prismatic lasers with the heart of the sea to refine and purify aquatic materials to survive.
+```bash
+docker build -t tr0mb4s/ftb-oceanblock-2:latest .
+```
 
-### Actually Additions
-After some time alone on the planet and you have begun to venture deeper, evolving your survival, having the ability to use your technological advancements to further sort items, transport energy and items and generate more types of power is essential to your journey.
+---
 
-### EnderIO
-With more knowledge comes more tech, create even more machines, armour, weapons, enchantments and various other types of energy to power your subaquatic evolution to increase your overall survivability on such a treacherous planet.
+## 📦 Tags
 
-### Just Dire Things
-As you develop your armoury of machines, tools and equipment, you'll have access to even more of them as you garner more materials by travelling to more locations, including the dimensions you will visit in your OceanBlock 2 journey,. Even more tools, even more armour and even more resources!
+- `1.7.0` – OceanBlock 2 128/100059, pre-installed
+- `latest` – optional tag alias
+- More packs coming soon...
 
-### Mystical Agriculture
-You may get more and more technologically advanced, but in order to sustain yourself you'll need to become proficient in cultivation, and this kind of cultivation unlocks many more possibilities for tools, materials and magical advancements!
+---
+
+## 📜 License
+
+MIT — free to use, build, and modify.
+
+---
+
+## 🧠 Credits
+
+- Based on [FTB OceanBlock](https://feed-the-beast.com/modpacks/128-oceanblock)
+- Powered by [Docker](https://www.docker.com/)
+- Built for server admins, hobbyists, and Unraid enthusiasts
+
+---
+
+## 💬 Questions or Suggestions?
+
+Feel free to open an issue or contribute via pull request!
