@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Container>
-  <Name>FTB OceanBlock 2 Server</Name>
+  <Name>ftb oceanblock 2 server</Name>
   <Repository>tr0mb4s/ftb-oceanblock-2:latest</Repository>
   <Registry>https://hub.docker.com/r/tr0mb4s/ftb-oceanblock-2</Registry>
   <Overview>A modded Minecraft (FTB OceanBlock 2) server with persistent saves, ready for Unraid.</Overview>
