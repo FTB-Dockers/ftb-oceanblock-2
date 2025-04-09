@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<Container>
+  <Name>FTB OceanBlock 2 Server</Name>
+  <Repository>tr0mb4s/ftb-oceanblock-2:latest</Repository>
+  <Registry>https://hub.docker.com/r/tr0mb4s/ftb-oceanblock-2</Registry>
+  <Overview>A modded Minecraft (FTB OceanBlock 2) server with persistent saves, ready for Unraid.</Overview>
+  <Support>https://github.com/yourname/ftb-oceanblock</Support>
+  <Category>GameServers</Category>
+  <WebUI>http://[IP]:[PORT:25565]</WebUI>
+
+  <Environment>
+    <Variable>
+      <Name>EULA</Name>
+      <Default>TRUE</Default>
+      <Description>Accept Minecraft EULA</Description>
+    </Variable>
+    <Variable>
+      <Name>MEMORY</Name>
+      <Default>6G</Default>
+      <Description>Maximum Java heap size</Description>
+    </Variable>
+    <Variable>
+      <Name>JVM_OPTS</Name>
+      <Default>-XX:+UseG1GC</Default>
+      <Description>JVM options</Description>
+    </Variable>
+  </Environment>
+
+  <Config Name="Game Port" Target="25565" Default="25565" Mode="tcp" Description="Minecraft Server Port" Type="Port" />
+  <Data>
+    <Name>World Save Data</Name>
+    <Target>/data</Target>
+    <Default>/mnt/user/appdata/ftb-oceanblock-2</Default>
+    <Description>Location to store world, configs, and mods</Description>
+    <Type>Path</Type>
+  </Data>
+</Container>
