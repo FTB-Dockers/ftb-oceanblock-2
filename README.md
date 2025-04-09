@@ -1,5 +1,11 @@
 # Instructions
 To install this on Unraid, copy template/ftb-oceanblock.xml into /boot/config/plugins/dockerMan/templates-user/ on your Unraid server.
+Alternatively, you can execute the following script in Docker terminal:
+
+```
+curl -o /boot/config/plugins/dockerMan/templates-user/ftb-oceanblock-2.xml \
+  https://raw.githubusercontent.com/FTB-Dockers/ftb-oceanblock-2/blob/main/template/ftb-oceanblock-2.xml
+```
 
 -----------------------------------
 ## About FTB OceanBlock 2
