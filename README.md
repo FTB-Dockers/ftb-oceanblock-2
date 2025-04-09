@@ -26,7 +26,7 @@ docker run -d \
   -e EULA=true \
   -e MEMORY=6G \
   -v /your/local/folder:/data \
-  yourdockerhubuser/ftb-oceanblock:1.0.0
+  tr0mb4s/ftb-oceanblock-2:latest
 ```
 
 ---
